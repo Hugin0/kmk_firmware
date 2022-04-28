@@ -15,7 +15,7 @@ layers = Layers()
 media = MediaKeys()
 
 modtap = ModTap()
-modtap.tap_time = 150
+modtap.tap_time = 220
 
 caps_word = CapsWord()
 caps_word.keys_ignored.append(KC.UNDS)
@@ -42,7 +42,7 @@ keyboard.col_pins = (
     board.MOSI,
     board.MISO,
     board.SCK,
-)   
+)
 keyboard.diode_orientation = DiodeOrientation.COL2ROW
 
 # Cleaner key names
@@ -53,21 +53,22 @@ LOWER = KC.MO(1)
 RAISE = KC.MO(2)
 KB_SYS = KC.MO(3)
 
+# my home row modtap short names for easier readability in the keymap
 SH_ENT = KC.MT(KC.ENT, KC.RSFT)
 TAP_CW = KC.TD(KC.LSFT, KC.CW)
 
-MT_LALT = KC.MT(KC.S, KC.LALT, prefer_hold=False,)
-MT_LCTRL = KC.MT(KC.D, KC.LCTRL, prefer_hold=False,)
+MT_LALT = KC.MT(KC.S, KC.LALT, prefer_hold=False, tap_interrupted=True)
+MT_LCTRL = KC.MT(KC.D, KC.LCTRL, prefer_hold=False, tap_interrupted=True)
 
-MT_RALT = KC.MT(KC.L, KC.RALT, prefer_hold=False,)
-MT_RCTRL = KC.MT(KC.K, KC.RCTRL, prefer_hold=False,)
+MT_RALT = KC.MT(KC.L, KC.RALT, prefer_hold=False, tap_interrupted=True)
+MT_RCTRL = KC.MT(KC.K, KC.RCTRL, prefer_hold=False, tap_interrupted=True)
 
 keyboard.keymap = [
     [  #QWERTY
         KC.TAB,  KC.Q,    KC.W,    KC.E,     KC.R,    KC.T,    KC.Y,    KC.U,    KC.I,     KC.O,    KC.P,    KC.BSPC,
         KC.ESC,  KC.A,    MT_LALT, MT_LCTRL, KC.F,    KC.G,    KC.H,    KC.J,    MT_RCTRL, MT_RALT, KC.SCLN, KC.QUOT,
         KC.LSFT, KC.Z,    KC.X,    KC.C,     KC.V,    KC.B,    KC.N,    KC.M,    KC.COMM,  KC.DOT,  KC.SLSH, SH_ENT ,
-        KC.LGUI, KC.LCTL, KC.LALT, XXXXXXX,  LOWER,   KC.SPC,  TAP_CW,  RAISE,   KC.LEFT,  KC.DOWN, KC.UP,   KC.RGHT,
+        KC.LGUI, KC.LCTL, KC.LALT, XXXXXXX,  LOWER,   KC.SPC,  KC.LSFT,  RAISE,   KC.LEFT,  KC.DOWN, KC.UP,   KC.RGHT,
     ],
     [  #LOWER
         KC.GRV , _______, KC.UP  , _______,  _______, _______, _______, KC.N7  , KC.N8  ,  KC.N9  , _______, _______,
